@@ -5,3 +5,6 @@ __pycache__/
 *.fifo
 .deployed_commit
 .deploy_failed
+.env
+.env.*
+telemetry.db*

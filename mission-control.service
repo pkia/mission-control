@@ -1,0 +1,19 @@
+[Unit]
+Description=Hermes Mission Control (AI workload Kanban dashboard :8788)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ev
+WorkingDirectory=/home/ev/apps/mission-control
+Environment=HERMES_HOME=/home/ev/.hermes
+Environment=MC_PORT=8788
+Environment=MC_BIND=0.0.0.0
+Environment=MC_BOARD=default
+ExecStart=/usr/bin/python3 /home/ev/apps/mission-control/server.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

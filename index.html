@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0a0e14">
+<meta name="color-scheme" content="dark">
+<title>HERMES MISSION CONTROL</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header id="topbar">
+  <div class="brand">HERMES <span>MISSION CONTROL</span></div>
+  <div class="conn" id="conn">●</div>
+</header>
+
+<section id="summary" class="summary">
+  <div class="stat"><b id="s-agents">0</b><span>ACTIVE AGENTS</span></div>
+  <div class="stat"><b id="s-progress">0</b><span>IN PROGRESS</span></div>
+  <div class="stat"><b id="s-waiting">0</b><span>WAITING</span></div>
+  <div class="stat"><b id="s-review">0</b><span>REVIEW</span></div>
+  <div class="stat warn" id="s-blocked-wrap"><b id="s-blocked">0</b><span>BLOCKED</span></div>
+  <div class="stat good"><b id="s-done">0</b><span>DONE TODAY</span></div>
+</section>
+
+<nav id="tabs">
+  <button class="tab active" data-view="board">Board</button>
+  <button class="tab" data-view="agents">Agents</button>
+  <button class="tab" data-view="feed">Activity</button>
+</nav>
+
+<main>
+  <section id="view-board" class="view active">
+    <div id="board" class="board"></div>
+  </section>
+  <section id="view-agents" class="view">
+    <div id="agents-list" class="agents-list"><div class="empty">No agents registered.</div></div>
+  </section>
+  <section id="view-feed" class="view">
+    <div id="feed" class="feed"><div class="empty">No activity yet.</div></div>
+  </section>
+</main>
+
+<dialog id="taskdlg">
+  <div class="dlg-head">
+    <h3 id="dlg-title"></h3>
+    <button class="dlg-close" onclick="document.getElementById('taskdlg').close()">✕</button>
+  </div>
+  <div id="dlg-body"></div>
+</dialog>
+
+<script src="/app.js"></script>
+</body>
+</html>
