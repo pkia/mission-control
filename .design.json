@@ -1,0 +1,23 @@
+{
+  "app": "mission-control",
+  "port": 8788,
+  "bind": "0.0.0.0",
+  "board": "default",
+  "design_decisions": [
+    "Board of record = Hermes native ~/.hermes/kanban.db (single write authority; dashboard is view+API layer per spec)",
+    "Writes go through hermes_cli.kanban_db in-process (same code path as hermes kanban CLI) — never raw SQL",
+    "Sidecar telemetry.db for fields the native schema lacks: live activity strings, progress %, standalone agent heartbeats, repo/log links",
+    "SSE for live updates; snapshot hash diff every 1.5s; full-snapshot push (board is small)",
+    "Reads unauthenticated on LAN (same trust model as hermes-webui :8787); ALL writes require Bearer token",
+    "stdlib only — no deps, PEP 668 safe on Pi",
+    "Unassigned ready tasks never dispatch (dispatcher requires real-profile assignee) — safe API testing"
+  ],
+  "status_map": {
+    "BACKLOG": ["triage", "todo", "scheduled"],
+    "READY": ["ready"],
+    "IN PROGRESS": ["running"],
+    "REVIEW": ["review"],
+    "BLOCKED": ["blocked"],
+    "DONE": ["done"]
+  }
+}

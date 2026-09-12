@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          pip install pytest ruff
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Lint (fatal rules only)
+        run: ruff check . --select E9,F63,F7,F82
+
+      - name: Byte-compile all sources
+        run: python -m compileall -q .
+
+      - name: Tests
+        run: |
+          if compgen -G "tests/test_*.py" > /dev/null; then pytest -v; else echo "no tests yet"; fi

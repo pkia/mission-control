@@ -1,0 +1,7 @@
+# added by project-guard at adoption
+__pycache__/
+*.pyc
+*.log
+*.fifo
+.deployed_commit
+.deploy_failed
