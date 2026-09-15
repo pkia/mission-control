@@ -68,6 +68,6 @@ Task IDs are printed by `mc create` (also visible on the dashboard cards).
 - Telemetry/activity/feed: `~/apps/mission-control/telemetry.db` (SQLite, WAL)
 - Service: `mission-control.service` (system), port 8788, LAN-bound.
   Restart: `sudo systemctl restart mission-control`.
-- Dashboard URL (phone): `http://YOUR_PI_HOST:8788` (LAN) or
-  `http://YOUR_TAILNET_HOST:8788` (tailnet). Type the `http://` explicitly —
-  HTTPS-First browsers upgrade bare hostnames to https and fail.
+- Dashboard URL (phone): `http://<pi-host>:8788` (LAN or tailnet). Type the
+  `http://` explicitly — HTTPS-First browsers upgrade bare hostnames to https
+  and fail.
